@@ -1,6 +1,18 @@
 import fs from "fs";
 import ttf2woff from "gulp-ttf2woff";
 import ttf2woff2 from "gulp-ttf2woff2";
+import fonter from "gulp-fonter";
+
+// export const oftToTtf = () => {
+//   return app.gulp
+//     .src(`${app.path.src.fontsSource}/*.otf`)
+//     .pipe(
+//       fonter({
+//         formats: ["ttf"],
+//       })
+//     )
+//     .pipe(app.gulp.dest(app.path.src.fontsSource));
+// };
 
 export const ttfToWoff = () => {
   return app.gulp

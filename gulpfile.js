@@ -25,6 +25,7 @@ function watcher(done) {
   gulp.watch(path.watch.js, scriptsDev);
   gulp.watch(path.watch.js, scriptsLibs);
   gulp.watch(path.watch.img, images);
+  gulp.watch(path.watch.fonts, fonts);
   gulp.watch(path.watch.svg, svgSprites);
   done();
 }
@@ -34,7 +35,6 @@ const mainTasks = series(
   fonts,
   parallel(html, styles, scriptsDev, scriptsLibs, images, svgSprites)
 );
-
 const dev = series(reset, mainTasks, parallel(watcher, server));
 const build = series(reset, mainTasks);
 

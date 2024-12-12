@@ -1,10 +1,12 @@
 import imageminWebp from "imagemin-webp";
 import imageMin from "gulp-imagemin";
 import extReplace from "gulp-ext-replace";
+import newer from "gulp-newer";
 
 export const images = () => {
   const stream = app.gulp
     .src(app.path.src.imgSource, { encoding: false })
+    .pipe(newer(app.path.build.img))
     .pipe(
       imageMin({
         progressive: true,
