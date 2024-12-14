@@ -72,14 +72,6 @@ a[href^="mailto"] {
   white-space: nowrap;
 }
 
-a[href^="tel"] {
-  pointer-events: none;
-
-  @include respond($tabletPortrait) {
-    pointer-events: all;
-  }
-}
-
 ::selection {
   background-color: $colorAccent;
   color: $colorWhite;

@@ -14,7 +14,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build --build"
+    "build": "gulp build --build",
+    "deploy": "gulp ftp",
+    "archive": "gulp archive"
   },
   "author": "Evgeny Gladkov",
   "license": "ISC",
@@ -33,7 +35,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-ext-replace": "^0.3.0",
-    "gulp-fonter": "^0.3.0",
     "gulp-html-beautify": "^1.0.1",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^9.0.0",
@@ -48,10 +49,13 @@
     "gulp-svg-sprites": "^4.1.2",
     "gulp-ttf2woff": "^2.0.0",
     "gulp-ttf2woff2": "^5.0.0",
+    "gulp-util": "^3.0.8",
     "gulp-version-number": "^0.2.4",
     "gulp-webp-html-nosvg": "^1.1.1",
+    "gulp-zip": "^6.0.0",
     "imagemin-webp": "^8.0.0",
     "sass": "^1.71.1",
+    "vinyl-ftp": "^0.6.1",
     "webpack": "^5.90.3",
     "webpack-stream": "^7.0.0"
   },

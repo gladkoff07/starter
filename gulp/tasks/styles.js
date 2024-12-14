@@ -38,7 +38,7 @@ export const styles = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "CSS",
+          title: "STYLE",
           message: "Error: <%= error.message %>",
         })
       )

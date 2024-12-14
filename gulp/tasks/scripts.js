@@ -8,7 +8,7 @@ export const scriptsDev = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "JS",
+          title: "SCRIPTS",
           message: "Error: <%= error.message %>",
         })
       )
@@ -26,7 +26,7 @@ export const scriptsLibs = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "JS",
+          title: "SCRIPTS",
           message: "Error: <%= error.message %>",
         })
       )
