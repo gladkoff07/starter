@@ -40,7 +40,7 @@ export const ttfToWoff2 = () => {
 };
 
 export const styleFonts = (cb) => {
-  let fontsFile = `${app.path.srcFolder}/scss/core/_fonts.scss`;
+  let fontsFile = `${app.path.srcFolder}/scss/base/_fonts.scss`;
   fs.readdir(app.path.src.fonts, (err, data) => {
     if (!err) {
       data = data.filter((item) => item !== ".gitkeep");
