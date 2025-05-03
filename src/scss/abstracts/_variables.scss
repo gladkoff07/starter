@@ -3,12 +3,20 @@ $colorWhite: #fff;
 $colorBlack: #000;
 $colorAccent: #f1c40f;
 
+$colorMainBlue: #2D57B4;
+$colorYellowOrange: #FCA73C;
+$colorModerateSlateBlue: #664AF1;
+$colorGray: #525C6B;
+$colorGreyishPurpleBlue: #393945;
+$colorBlueAlice: #f2f6ff;
+
 // Size
-$fontSize: 18px;
+$fontSize: 16px;
+$fontSizeSm: 14px;
 $fontLineHeight: 1.3;
 
 // Fonts
-$fontDefault: "Geologica-Regular";
+$fontDefault: "Inter-Regular";
 $fontFallback: Helvetica, sans-serif;
 $font: $fontDefault, $fontFallback;
 
@@ -19,5 +27,7 @@ $varTrs: 0.3s ease-in-out;
 $phoneXs: "(max-width: 375px)";
 $phoneSm: "(max-width: 575px)";
 $tabletPortrait: "(max-width: 767px)";
-$tabletLandscape: "(max-width: 979px)";
-$largeDesktop: "(max-width: 1169px)";
+$tabletLandscape_980: "(max-width: 979px)";
+$tabletLandscape: "(max-width: 1023px)";
+$largeDesktop_1280: "(max-width: 1279px)";
+$largeDesktop: "(max-width: 1319px)";

@@ -12,7 +12,7 @@ export const html = (done) => {
       })
     )
     .pipe(app.plugins.replace(/\$img\//g, "img/"))
-    .pipe(webpHtmlNosvg())
+    // .pipe(webpHtmlNosvg())
     .pipe(
       app.plugins.if(
         app.isBuild,

@@ -1,6 +1,14 @@
 /node_modules/
-/build/
+/gulp/
+/src/
+.babelrc
+.browserslistrc
+.editorconfig
 apiHost.js
+gulpfile.js
+package-lock.json
+package.json
+README.md
 /**/_backstage
 /**/package-lock.json
 /**/Thumbs.db

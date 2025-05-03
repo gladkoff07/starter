@@ -1,2 +1,15 @@
+@use '../../abstracts/' as *;
 
-.logo {}
+.logo {
+  width: 190px;
+  height: 190px;
+  padding: 0 0 8px 1.1%;
+  @include alignJustify(center, center);
+  background-color: $colorMainBlue;
+
+  @include respond($largeDesktop) {
+    width: 140px;
+    height: 140px;
+    padding: 0 1% 13px 4.4%;
+  }
+}

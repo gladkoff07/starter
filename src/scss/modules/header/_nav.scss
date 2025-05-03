@@ -1,14 +1,24 @@
+@use '../../abstracts/' as *;
 
 .nav {
   @include alignJustify();
+  gap: 0 59px;
 
   &__item {
+    @include fontFamily(14px, 'Inter-Bold');
+    color: $colorBlack;
     text-decoration: none;
+    text-transform: uppercase;
 
-    &_active {
+    &--active {
     }
 
     &:hover {
+      color: $colorMainBlue;
     }
+  }
+
+  @include respond($largeDesktop) {
+    gap: 0 20px;
   }
 }

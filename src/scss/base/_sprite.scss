@@ -1,4 +1,70 @@
 .icon {
-  &-name {
+
+  &-benefits-alarm-clock {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+
+  &-benefits-bot {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+
+  &-benefits-book-open {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+
+  &-benefits-headset {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+
+  &-benefits-database {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+
+  &-address-place,
+  &-address-phone,
+  &-address-email {
+    width: 16px;
+    height: 16px;
+  }
+
+  &-social-yo,
+  &-social-tg,
+  &-social-vk {
+    width: 24px;
+    height: 24px;
+  }
+
+  &-address-place,
+  &-address-phone,
+  &-address-email {
+    width: 17px;
+    height: 16px;
+    fill: transparent;
+  }
+
+  &-menu--open {
+    width: 39px;
+    height: 24px;
+  }
+
+  &-menu--close {
+    width: 40px;
+    height: 40px;
+    fill: #fff;
+  }
+
+  &-table-ellipse {
+    width: 14px;
+    height: 14px;
   }
 }

@@ -61,8 +61,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.33",
-    "normalize.css": "^8.0.1",
-    "swiper": "^11.0.7"
+    "normalize.css": "^8.0.1"
   },
   "type": "module"
 }

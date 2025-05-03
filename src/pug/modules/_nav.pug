@@ -1,7 +1,7 @@
 
 mixin nav(className)
   nav(class=`nav ${className}`)
-    - var navList = ['name']
+    - var navList = ['Тарифы', 'Лицензии', 'Решения', 'Команда', 'О компании', 'Контакты']
       each item in navList
         a(href='#' class="nav__item")= item
 

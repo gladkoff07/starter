@@ -1,2 +1,47 @@
+@use '../../abstracts/' as *;
+
+@forward '_logo.scss';
+@forward '_nav.scss';
+@forward '_header-phone.scss';
+@forward '_mobile-menu.scss';
+
+.wrapper-top {
+  background-image: url(../img/img-bg-intro.svg);
+  background-position: 74% 105px;
+}
+
 .header {
+
+  &__logo {}
+
+  &__nav {
+    margin: 32px 0 0 2.4%;
+  }
+
+  &__phone {
+    margin: 16px 0 0 auto;
+  }
+
+  &__mobile-button {
+    display: none;
+    margin: 16px 0 0 40px;
+  }
+
+  @include respond($tabletLandscape) {
+
+    &__mobile-button {
+      display: block;
+    }
+  }
+
+  @include respond($phoneSm) {
+
+    &__phone {
+      display: none;
+    }
+
+    &__mobile-button {
+      margin-left: auto;
+    }
+  }
 }

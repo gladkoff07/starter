@@ -1,8 +1,8 @@
 // Import Libs from npm
 
 import { Fancybox } from "@fancyapps/ui";
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+// // import Swiper from "swiper";
+// // import { Navigation, Pagination } from "swiper/modules";
 
 // Fancybox init
 Fancybox.bind("[data-fancybox]", {
@@ -11,23 +11,23 @@ Fancybox.bind("[data-fancybox]", {
 });
 
 // Swiper init
-const swiperName = new Swiper(".js-slider-name", {
-  // configure Swiper to use modules
-  modules: [Navigation, Pagination],
+// const swiperName = new Swiper(".js-slider-name", {
+//   // configure Swiper to use modules
+//   modules: [Navigation, Pagination],
 
-  slidesPerView: 3,
-  roundLengths: true,
-  loop: true,
+//   slidesPerView: 3,
+//   roundLengths: true,
+//   loop: true,
 
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
+//   // If we need pagination
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
 
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+//   // Navigation arrows
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+// });
