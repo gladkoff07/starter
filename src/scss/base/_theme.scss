@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 
 .container {
-  max-width: 1320px;
+  max-width: 1200px;
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
@@ -17,7 +17,7 @@
 
 .section,
 section {
-  min-width: 1320px;
+  min-width: 1200px;
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
@@ -31,121 +31,20 @@ section {
 
 .link-button {
   display: inline-block;
-  padding: 11px 56px;
-  border-radius: 30px;
-  background-color: $colorYellowOrange;
-  @include fontFamily(18px, 'Inter-Bold');
-  color: $colorWhite;
   text-decoration: none;
   outline: none;
 
   &:hover {
-    background-color: #f7a032;
-    box-shadow: 0 0 20px rgba(247, 160, 50, .5);
-  }
-
-  @include respond($phoneSm) {
-    width: 100%;
-    padding: 11px 0;
-    text-align: center;
   }
 }
 
 .page-header {
-  @include alignJustify(flex-start, flex-end);
-  gap: 0 18px;
-  @include fontFamily(48px, 'Montserrat-Bold');
-  line-height: 1.25;
-
-  img {
-    position: relative;
-    top: 4px;
-    max-width: 330px;
-  }
-
-  @include respond($tabletLandscape) {
-    font-size: 40px;
-
-    img {
-      top: 2px;
-      max-width: 250px;
-    }
-  }
-
-  @include respond($tabletPortrait) {
-    font-size: 32px;
-
-    img {
-      max-width: 200px;
-    }
-  }
-
-  @include respond($phoneSm) {
-    line-height: 1.2;
-
-    img {
-      max-width: 220px;
-    }
-  }
 }
 
 .section-header {
-  @include fontFamily(48px, 'Montserrat-Bold');
-  text-align: center;
-
-  &--img {
-    @include alignJustify(center, flex-end);
-    gap: 0 32px;
-
-    img {
-      position: relative;
-      top: 4px;
-    }
-  }
-
-  @include respond($tabletLandscape) {
-    font-size: 40px;
-
-    img {
-      top: 2px;
-      max-width: 250px;
-    }
-  }
-
-  @include respond($tabletPortrait) {
-    font-size: 32px;
-
-    img {
-      max-width: 200px;
-    }
-  }
-
-  @include respond($phoneSm) {
-    line-height: 1.25;
-
-    &--img {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px 0;
-    }
-
-    img {
-      max-width: 282px;
-    }
-  }
 }
 
 .section-description {
-  margin-bottom: 43px;
-  @include fontFamily(16px, 'Inter-Bold');
-  color: $colorGray;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-align: center;
-
-  @include respond($phoneSm) {
-    font-size: 14px;
-  }
 }
 
 .row {

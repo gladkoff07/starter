@@ -1,39 +1,12 @@
 extends template/_main
 
-include modules/_header
-include modules/_intro
-include modules/_reasons
-include modules/_benefits-implementation
-include modules/_license
-include modules/_what-get
-include modules/_certificates
-include modules/_achievements
-include modules/_clients
-
 block variables
   - var title = 'Главная страница'
 
 
 block content
-  .wrapper-top.section
-    // header
-    +header
-    // intro 
-    +intro
-  // reasons
-  +reasons
-  // benefits implementation
-  +benefits-implementation
-  // license
-  +license
-  // what do you get
-  +what-get
-  // certificates
-  +certificates
-  // achievements
-  +achievements
-  // clients
-  +clients
+  main.main.section 
+    .container
 
 
 

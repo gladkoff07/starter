@@ -1,7 +1,7 @@
 
 include ../mixins/_icon
+include ../modules/_header
 include ../modules/_footer
-include ../modules/_menu-mobile
 
 block variables
 
@@ -24,8 +24,9 @@ html(lang="ru-RU")
     <![endif]-->
 
   body
-    // mobile
-    +menu-mobile
+
+    // header
+    +header
 
     block content
 

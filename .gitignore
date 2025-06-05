@@ -1,6 +1,7 @@
 /node_modules/
 /gulp/
 /src/
+/build/
 .babelrc
 .browserslistrc
 .editorconfig

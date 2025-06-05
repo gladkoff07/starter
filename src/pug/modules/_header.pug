@@ -1,18 +1,4 @@
 
-include _nav
-
 mixin header()
   header.header.section
-    .container.row
-      // logo
-      .logo.header__logo
-        img(src="img/img-logo.svg" alt="")
-      // nav
-      +nav('header__nav')
-      // phone
-      .header-phone.header__phone
-        a(href="tel:+74954143290" class="header-phone__number") +7 495 414-32-90
-        .header-phone__time-work С 10:00 до 18:00 по рабочим дням
-      // mobile button
-      .mobile-button.header__mobile-button.js-mobile-button
-        +icon('icon-menu--open')
+    .container

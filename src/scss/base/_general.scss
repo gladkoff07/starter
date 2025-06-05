@@ -17,10 +17,6 @@ body {
   font-size: $fontSize;
   line-height: $fontLineHeight;
   background-color: $colorWhite;
-
-  @include respond($phoneSm) {
-    font-size: $fontSizeSm;
-  }
 }
 
 h1,
