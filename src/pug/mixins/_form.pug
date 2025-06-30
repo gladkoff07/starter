@@ -1,0 +1,12 @@
+
+mixin form(className)
+  form(action="#" class=`form ${className}`)
+    +input('text', 'name', 'form__input', 'Имя')
+    +input('email', 'email', 'form__input', 'E-mail')
+    +inputSubmit('Оправить', 'form__submit')
+
+mixin input(type, name, className, placeholder)
+  input(type = `${type}` name = `${name}` class=`${className}` placeholder=`${placeholder}`)
+
+mixin inputSubmit(value, className)
+  input(type="submit" value=`${value}` class=`${className}`)
