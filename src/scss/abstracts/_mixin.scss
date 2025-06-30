@@ -17,7 +17,7 @@
   top: $top;
 }
 
-@mixin alignJustify($direction: row, $justify: flex-start, $alignItems: flex-start) {
+@mixin alignJustify($direction: row, $alignItems: flex-start, $justify: flex-start) {
   display: flex;
   flex-wrap: wrap;
   flex-direction: $direction;

@@ -45,6 +45,6 @@ const ftp = series(deploy);
 const archive = series(zip);
 
 export { archive };
-export { ftp }; // not working
+export { ftp };
 export { build };
 gulp.task("default", dev);
