@@ -1,6 +1,3 @@
-// import ftp from "vinyl-ftp";
-// import gutil from "gulp-util";
-
 import { Client } from "basic-ftp"
 
 // add settings Host(create file apiHost.js for your data)
