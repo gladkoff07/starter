@@ -39,7 +39,7 @@ const mainTasks = series(
   series(images, copyImages),
   parallel(html, styles, scriptsDev, scriptsLibs, svgSprites)
 );
-const dev = series(reset, mainTasks, parallel(watcher, server));
+const dev = series(mainTasks, parallel(watcher, server));
 const build = series(reset, mainTasks);
 const ftp = series(deploy);
 const archive = series(zip);

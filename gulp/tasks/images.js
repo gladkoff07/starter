@@ -1,15 +1,13 @@
+// import { src, dest, series, parallel, watch } from 'gulp';
 import imageminWebp from "imagemin-webp";
 import imageMin from "gulp-imagemin";
 import extReplace from "gulp-ext-replace";
 import newer from "gulp-newer";
 
-const isSvg = (file) => {
-  return file.extname === ".svg";
-};
-
 export const images = () => {
   const stream = app.gulp
     .src(app.path.src.imgSource, { encoding: false })
+    .pipe(app.plugins.newer({dest: app.path.build.img, ext: '.webp'}))
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -18,7 +16,6 @@ export const images = () => {
         })
       )
     )
-    .pipe(app.plugins.newer(app.path.src.img))
     .pipe(
       imageMin({
         progressive: true,
@@ -27,8 +24,6 @@ export const images = () => {
       })
     )
     .pipe(extReplace(".webp"))
-    .pipe(app.gulp.dest(app.path.src.img))
-    .pipe(app.gulp.src(app.path.src.img))
     .pipe(app.gulp.dest(app.path.build.img));
   return stream;
 };
@@ -36,6 +31,7 @@ export const images = () => {
 export const copyImages = () => {
   return app.gulp
     .src(app.path.src.imgSvg, { encoding: false })
+    .pipe(app.plugins.newer({dest: app.path.build.img, ext: '.svg'}))
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -44,7 +40,5 @@ export const copyImages = () => {
         })
       )
     )
-    .pipe(app.gulp.dest(app.path.src.img))
-    .pipe(app.gulp.src(app.path.src.imgSvg))
     .pipe(app.gulp.dest(app.path.build.img));
 };
