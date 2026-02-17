@@ -1,23 +1,13 @@
-import rename from "gulp-rename";
-import cssnano from "cssnano";
-import cleanCss from "gulp-clean-css";
-import gulpSass from "gulp-sass";
-import * as dartSass from "sass";
+import rename from "gulp-rename"
+import cssnano from "cssnano"
+import cleanCss from "gulp-clean-css"
+import gulpSass from "gulp-sass"
+import * as dartSass from "sass"
 
-const sass = gulpSass(dartSass);
+const sass = gulpSass(dartSass)
 
-const stylesDev = [
-  cssnano({
-    preset: [
-      "lite",
-      {
-        normalizeWhitespace: false,
-        discardComments: false,
-        cssDeclarationSorter: { order: "smacss" },
-      },
-    ],
-  }),
-];
+// Оптимизация: в dev режиме без минификации для скорости
+const stylesDev = []
 
 const stylesBuild = [
   cssnano({
@@ -30,7 +20,7 @@ const stylesBuild = [
       },
     ],
   }),
-];
+]
 
 export const styles = () => {
   return app.gulp
@@ -44,6 +34,8 @@ export const styles = () => {
       )
     )
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
+    // Инкрементальная сборка: обрабатываем только изменённые файлы
+    .pipe(app.plugins.changed(app.path.build.styles, { extension: '.css' }))
     .pipe(app.plugins.replace(/\$img\//g, "../img/"))
     .pipe(sass(app.isBuild ? stylesBuild : stylesDev))
     .pipe(
@@ -53,7 +45,8 @@ export const styles = () => {
       )
     )
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
+    // Всегда добавляем .min суффикс для совместимости с HTML
     .pipe(rename({ suffix: ".min", prefix: "" }))
     .pipe(app.gulp.dest(app.path.build.styles))
-    .pipe(app.plugins.browsersync.stream());
-};
+    .pipe(app.plugins.browsersync.stream())
+}

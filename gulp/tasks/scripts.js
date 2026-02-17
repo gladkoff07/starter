@@ -1,6 +1,12 @@
-import webpack from "webpack";
-import webpackStream from "webpack-stream";
-import babel from "gulp-babel";
+import webpack from "webpack"
+import webpackStream from "webpack-stream"
+import babel from "gulp-babel"
+import { fileURLToPath } from "url"
+import { dirname, join } from "path"
+
+// ES modules: эмуляция __filename
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 export const scriptsDev = () => {
   return app.gulp
@@ -13,12 +19,14 @@ export const scriptsDev = () => {
         })
       )
     )
+    // Инкрементальная сборка: обрабатываем только изменённые файлы
+    .pipe(app.plugins.newer(app.path.build.js))
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
     .pipe(babel())
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
     .pipe(app.gulp.dest(app.path.build.js))
-    .pipe(app.plugins.browsersync.stream());
-};
+    .pipe(app.plugins.browsersync.stream())
+}
 
 export const scriptsLibs = () => {
   return app.gulp
@@ -41,6 +49,13 @@ export const scriptsLibs = () => {
         output: {
           filename: "[name].js",
         },
+        // Оптимизация: кэширование webpack для vendor.js
+        cache: app.isDev ? {
+          type: "filesystem",
+          buildDependencies: {
+            config: [__filename]
+          }
+        } : false,
         module: {
           rules: [
             {
@@ -55,10 +70,12 @@ export const scriptsLibs = () => {
         },
         optimization: {
           minimize: !app.isDev,
+          // Отключаем splitChunks, чтобы всё оставалось в vendor.js
+          splitChunks: false,
         },
       })
     )
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
     .pipe(app.gulp.dest(app.path.build.js))
-    .pipe(app.plugins.browsersync.stream());
-};
+    .pipe(app.plugins.browsersync.stream())
+}

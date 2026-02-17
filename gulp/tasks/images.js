@@ -1,13 +1,12 @@
 // import { src, dest, series, parallel, watch } from 'gulp';
-import imageminWebp from "imagemin-webp";
-import imageMin from "gulp-imagemin";
-import extReplace from "gulp-ext-replace";
-import newer from "gulp-newer";
+import imageminWebp from "imagemin-webp"
+import imageMin from "gulp-imagemin"
+import extReplace from "gulp-ext-replace"
+import newer from "gulp-newer"
 
 export const images = () => {
   const stream = app.gulp
     .src(app.path.src.imgSource, { encoding: false })
-    .pipe(app.plugins.newer({dest: app.path.build.img, ext: '.webp'}))
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -15,6 +14,14 @@ export const images = () => {
           message: "Error: <%= error.message %>",
         })
       )
+    )
+    // Инкрементальная сборка: обрабатываем только изменённые файлы
+    // Сравниваем исходные файлы (jpg/png) с webp в папке назначения
+    .pipe(
+      newer({
+        dest: app.path.build.img,
+        ext: '.webp',
+      })
     )
     .pipe(
       imageMin({
@@ -24,14 +31,13 @@ export const images = () => {
       })
     )
     .pipe(extReplace(".webp"))
-    .pipe(app.gulp.dest(app.path.build.img));
-  return stream;
-};
+    .pipe(app.gulp.dest(app.path.build.img))
+  return stream
+}
 
 export const copyImages = () => {
   return app.gulp
     .src(app.path.src.imgSvg, { encoding: false })
-    .pipe(app.plugins.newer({dest: app.path.build.img, ext: '.svg'}))
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
@@ -40,5 +46,12 @@ export const copyImages = () => {
         })
       )
     )
-    .pipe(app.gulp.dest(app.path.build.img));
-};
+    // Инкрементальная сборка: обрабатываем только изменённые файлы
+    .pipe(
+      newer({
+        dest: app.path.build.img,
+        ext: '.svg',
+      })
+    )
+    .pipe(app.gulp.dest(app.path.build.img))
+}

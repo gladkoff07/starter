@@ -1,8 +1,8 @@
-import * as nodePath from "path";
-const rootFolder = nodePath.basename(nodePath.resolve());
-const buildFolder = "./build";
-const cleanFolder = "./build";
-const srcFolder = "./src";
+import * as nodePath from "path"
+const rootFolder = nodePath.basename(nodePath.resolve())
+const buildFolder = "./build"
+const cleanFolder = "./build"
+const srcFolder = "./src"
 
 export const path = {
   build: {
@@ -36,9 +36,9 @@ export const path = {
     fonts: `${srcFolder}/sources/fonts/`,
     svg: `${srcFolder}/sources/svg/*.svg`,
   },
-  clean: cleanFolder,
+  clean: [`${buildFolder}/**`, `!${buildFolder}/img/**`, `!${buildFolder}/img`],
   buildFolder: buildFolder,
   srcFolder: srcFolder,
   rootFolder: rootFolder,
   ftp: ``,
-};
+}
