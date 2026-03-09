@@ -23,30 +23,51 @@ const stylesBuild = [
 ]
 
 export const styles = () => {
-  return app.gulp
-    .src(app.path.src.styles)
+  // Базовый поток: общие шаги для всех сборок
+  const createBaseStream = () => app.gulp
+    .src(app.path.src.styles, { sourcemaps: app.isDev })
     .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: "STYLE",
-          message: "Error: <%= error.message %>",
-        })
-      )
+      app.plugins.plumber({
+        errorHandler: function (err) {
+          app.plugins.notify.onError({
+            title: "STYLE",
+            message: "Error: <%= error.message %>",
+          })(err);
+          this.emit('end');
+        }
+      })
     )
-    .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
-    // Инкрементальная сборка: обрабатываем только изменённые файлы
-    .pipe(app.plugins.changed(app.path.build.styles, { extension: '.css' }))
-    .pipe(app.plugins.replace(/\$img\//g, "../img/"))
-    .pipe(sass(app.isBuild ? stylesBuild : stylesDev))
-    .pipe(
-      app.plugins.if(
-        app.isBuild,
-        cleanCss({ level: { 1: { specialComments: 1 } } })
-      )
-    )
-    .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
-    // Всегда добавляем .min суффикс для совместимости с HTML
-    .pipe(rename({ suffix: ".min", prefix: "" }))
-    .pipe(app.gulp.dest(app.path.build.styles))
-    .pipe(app.plugins.browsersync.stream())
-}
+    .pipe(app.plugins.replace(/\$img\//g, "../img/"));
+
+  if (app.isDev) {
+    // DEV: один файл с .min суффиксом (для совместимости), без минификации
+    return createBaseStream()
+      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init({ loadMaps: true })))
+      .pipe(sass(stylesDev)) // просто компиляция SCSS
+      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write('.')))
+      .pipe(rename({ suffix: ".min", prefix: "" })) // main.min.css (не сжатый)
+      .pipe(app.gulp.dest(app.path.build.styles))
+      .pipe(app.plugins.browsersync.stream());
+      
+  } else {
+    // BUILD: два файла
+
+    // 1. Обычный CSS (без минификации)
+    const unminified = createBaseStream()
+      .pipe(sass(stylesDev)) // компиляция БЕЗ cssnano
+      // cleanCss НЕ применяем — оставляем форматирование
+      .pipe(rename({ suffix: "", prefix: "" })) // main.css
+      .pipe(app.gulp.dest(app.path.build.styles))
+      .pipe(app.plugins.browsersync.stream());
+
+    // 2. Минифицированный CSS
+    const minified = createBaseStream()
+      .pipe(sass(stylesBuild)) // компиляция С cssnano
+      .pipe(cleanCss({ level: { 1: { specialComments: 1 } } })) // доп. очистка
+      .pipe(rename({ suffix: ".min", prefix: "" })) // main.min.css
+      .pipe(app.gulp.dest(app.path.build.styles))
+      .pipe(app.plugins.browsersync.stream());
+
+    return merge(unminified, minified);
+  }
+};

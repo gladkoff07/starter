@@ -22,7 +22,20 @@ export const scriptsDev = () => {
     // Инкрементальная сборка: обрабатываем только изменённые файлы
     .pipe(app.plugins.newer(app.path.build.js))
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
-    .pipe(babel())
+    .pipe(babel({
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: { node: "current" }, 
+            modules: false,
+            ignoreBrowserslistConfig: true,
+            useBuiltIns: false,
+            corejs: false
+          }
+        ]
+      ]
+    }))
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
     .pipe(app.gulp.dest(app.path.build.js))
     .pipe(app.plugins.browsersync.stream())
