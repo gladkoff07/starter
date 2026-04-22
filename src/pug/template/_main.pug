@@ -1,4 +1,3 @@
-
 include ../mixins/_icon
 include ../mixins/_section
 include ../modules/_header
@@ -10,22 +9,21 @@ doctype html
 html(lang="ru-RU")
   head
     meta(charset="utf-8")
-    title #{title}
+    title #{ title }
     <!--[if IE]>
-    meta(http-equiv='X-UA-Compatible', content="IE = edge")
+    meta(http-equiv="X-UA-Compatible", content="IE = edge")
     <![endif]-->
-    meta(name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1")
-    meta(name="format-detection" content="telephone=no")
+    meta(name="viewport", content="width=device-width,initial-scale=1, maximum-scale=1")
+    meta(name="format-detection", content="telephone=no")
 
-    link(rel="stylesheet" href="css/vendor.min.css")
-    link(rel="stylesheet" href="css/main.min.css")
+    link(rel="stylesheet", href="css/vendor.min.css")
+    link(rel="stylesheet", href="css/main.min.css")
 
     <!--[if lt IE 9]>
     script(src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js")
     <![endif]-->
 
   body
-
     // header
     +header
 
@@ -33,7 +31,7 @@ html(lang="ru-RU")
 
     // footer
     +footer
-    
+
     // scripts
-    script(src="js/vendor.js" defer)
-    script(src="js/main.js" defer)
+    script(src="js/vendor.js", defer)
+    script(src="js/main.js", defer)

@@ -1,4 +1,4 @@
-@use "../abstracts/" as *;
+@use '../abstracts/' as *;
 
 html {
   box-sizing: border-box;
@@ -69,8 +69,8 @@ iframe {
   max-width: 100%;
 }
 
-a[href^="tel"],
-a[href^="mailto"] {
+a[href^='tel'],
+a[href^='mailto'] {
   white-space: nowrap;
 }
 

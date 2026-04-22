@@ -1,8 +1,9 @@
-@use "../../abstracts/" as *;
+@use '../../abstracts/' as *;
 
 .header {
-  
-  &__logo {}
+  &__logo {
+  }
 
-  &__nav {}
+  &__nav {
+  }
 }

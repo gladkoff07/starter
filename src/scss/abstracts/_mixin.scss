@@ -9,7 +9,7 @@
   font-size: $size;
 }
 
-@mixin content($content: "", $display: block, $left, $top) {
+@mixin content($content: '', $display: block, $left, $top) {
   content: $content;
   display: $display;
   position: absolute;
@@ -17,7 +17,11 @@
   top: $top;
 }
 
-@mixin alignJustify($direction: row, $alignItems: flex-start, $justify: flex-start) {
+@mixin alignJustify(
+  $direction: row,
+  $alignItems: flex-start,
+  $justify: flex-start
+) {
   display: flex;
   flex-wrap: wrap;
   flex-direction: $direction;
@@ -28,9 +32,9 @@
 @mixin blockAuto($width, $marginTop: false) {
   width: $width;
   margin-inline: auto;
-  
+
   @if $marginTop {
-    margin-top: $marginTop
+    margin-top: $marginTop;
   }
 }
 

@@ -1,4 +1,4 @@
-import svgSprite from "gulp-svg-sprites";
+import svgSprite from 'gulp-svg-sprites'
 
 export const svgSprites = () => {
   return app.gulp
@@ -6,17 +6,17 @@ export const svgSprites = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "SVG",
-          message: "Error: <%= error.message %>",
-        })
-      )
+          title: 'SVG',
+          message: 'Error: <%= error.message %>',
+        }),
+      ),
     )
     .pipe(
       svgSprite({
-        mode: "symbols",
-      })
+        mode: 'symbols',
+      }),
     )
     .pipe(app.gulp.dest(app.path.src.svg))
     .pipe(app.gulp.src(app.path.src.svg))
-    .pipe(app.gulp.dest(app.path.build.svg));
-};
+    .pipe(app.gulp.dest(app.path.build.svg))
+}

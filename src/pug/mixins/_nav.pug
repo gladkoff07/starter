@@ -1,12 +1,11 @@
-
 mixin nav(className)
   nav(class=`nav ${className}`)
-    - var navList = ['']
+    - var navList = [""]
       each item in navList
-        a(href='#' class="nav__item")= item
+        a.nav__item(href="#")= item
 
 mixin navAncor(className)
   nav(class=`nav ${className}`)
-    - var navList = [['ancor', 'name']]
+    - var navList = [["ancor", "name"]]
       each item in navList
-        a(href=`#${item[0]}` class="nav__item")= item[1]
+        a.nav__item(href=`#${item[0]}`)= item[1]

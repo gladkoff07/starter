@@ -1,0 +1,11 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 80,
+  "pugSingleQuote": false,
+  "pugTabWidth": 2,
+  "pugUseTabs": false,
+  "pugPrintWidth": 100,
+  "pugSemi": false,
+  "plugins": ["@prettier/plugin-pug"]
+}

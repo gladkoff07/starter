@@ -8,7 +8,7 @@ $fontSize: 18px;
 $fontLineHeight: 1.3;
 
 // Fonts
-$fontDefault: "Arial";
+$fontDefault: 'Arial';
 $fontFallback: Helvetica, sans-serif;
 $font: $fontDefault, $fontFallback;
 
@@ -16,9 +16,9 @@ $font: $fontDefault, $fontFallback;
 $varTrs: 0.3s ease-in-out;
 
 // Breakpoints
-$phoneXs: "(max-width: 375px)";
-$phoneSm: "(max-width: 575px)";
-$tabletPortrait: "(max-width: 767px)";
-$tabletLandscape_980: "(max-width: 979px)";
-$tabletLandscape: "(max-width: 1023px)";
-$largeDesktop: "(max-width: 1199px)";
+$phoneXs: '(max-width: 375px)';
+$phoneSm: '(max-width: 575px)';
+$tabletPortrait: '(max-width: 767px)';
+$tabletLandscape_980: '(max-width: 979px)';
+$tabletLandscape: '(max-width: 1023px)';
+$largeDesktop: '(max-width: 1199px)';

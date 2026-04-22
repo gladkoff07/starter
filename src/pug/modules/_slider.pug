@@ -1,8 +1,7 @@
-
 mixin slider
   .slider-name.swiper.js-slider-name
     .swiper-wrapper
-      +slider-name-slide('')
+      +slider-name-slide("")
 
     .swiper-pagination
     .swiper-button-prev
@@ -12,4 +11,4 @@ mixin slider-name-slide(imgName)
   .swiper-slide
     .slider-name__item
       .swiper-slide__img
-        img(src=`img/${imgName}.webp` alt="")
+        img(src=`img/${imgName}.webp`, alt="")

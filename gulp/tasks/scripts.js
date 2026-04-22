@@ -1,44 +1,48 @@
-import webpack from "webpack"
-import webpackStream from "webpack-stream"
-import babel from "gulp-babel"
-import { fileURLToPath } from "url"
-import { dirname, join } from "path"
+import webpack from 'webpack'
+import webpackStream from 'webpack-stream'
+import babel from 'gulp-babel'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 
 // ES modules: эмуляция __filename
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export const scriptsDev = () => {
-  return app.gulp
-    .src(app.path.src.js)
-    .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: "SCRIPTS",
-          message: "Error: <%= error.message %>",
-        })
+  return (
+    app.gulp
+      .src(app.path.src.js)
+      .pipe(
+        app.plugins.plumber(
+          app.plugins.notify.onError({
+            title: 'SCRIPTS',
+            message: 'Error: <%= error.message %>',
+          }),
+        ),
       )
-    )
-    // Инкрементальная сборка: обрабатываем только изменённые файлы
-    .pipe(app.plugins.newer(app.path.build.js))
-    .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
-    .pipe(babel({
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            targets: { node: "current" }, 
-            modules: false,
-            ignoreBrowserslistConfig: true,
-            useBuiltIns: false,
-            corejs: false
-          }
-        ]
-      ]
-    }))
-    .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
-    .pipe(app.gulp.dest(app.path.build.js))
-    .pipe(app.plugins.browsersync.stream())
+      // Инкрементальная сборка: обрабатываем только изменённые файлы
+      .pipe(app.plugins.newer(app.path.build.js))
+      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
+      .pipe(
+        babel({
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                targets: { node: 'current' },
+                modules: false,
+                ignoreBrowserslistConfig: true,
+                useBuiltIns: false,
+                corejs: false,
+              },
+            ],
+          ],
+        }),
+      )
+      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
+      .pipe(app.gulp.dest(app.path.build.js))
+      .pipe(app.plugins.browsersync.stream())
+  )
 }
 
 export const scriptsLibs = () => {
@@ -47,36 +51,38 @@ export const scriptsLibs = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "SCRIPTS",
-          message: "Error: <%= error.message %>",
-        })
-      )
+          title: 'SCRIPTS',
+          message: 'Error: <%= error.message %>',
+        }),
+      ),
     )
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.init()))
     .pipe(
       webpackStream({
-        mode: app.isBuild ? "production" : "development",
+        mode: app.isBuild ? 'production' : 'development',
         entry: {
           vendor: `./src/js/vendor.js`,
         },
         output: {
-          filename: "[name].js",
+          filename: '[name].js',
         },
         // Оптимизация: кэширование webpack для vendor.js
-        cache: app.isDev ? {
-          type: "filesystem",
-          buildDependencies: {
-            config: [__filename]
-          }
-        } : false,
+        cache: app.isDev
+          ? {
+              type: 'filesystem',
+              buildDependencies: {
+                config: [__filename],
+              },
+            }
+          : false,
         module: {
           rules: [
             {
               test: /\.(js)$/,
               exclude: /(node_modules)/,
-              loader: "babel-loader",
+              loader: 'babel-loader',
               options: {
-                presets: ["@babel/env"],
+                presets: ['@babel/env'],
               },
             },
           ],
@@ -86,7 +92,7 @@ export const scriptsLibs = () => {
           // Отключаем splitChunks, чтобы всё оставалось в vendor.js
           splitChunks: false,
         },
-      })
+      }),
     )
     .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write()))
     .pipe(app.gulp.dest(app.path.build.js))

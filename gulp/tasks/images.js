@@ -1,8 +1,8 @@
 // import { src, dest, series, parallel, watch } from 'gulp';
-import imageminWebp from "imagemin-webp"
-import imageMin from "gulp-imagemin"
-import extReplace from "gulp-ext-replace"
-import newer from "gulp-newer"
+import imageminWebp from 'imagemin-webp'
+import imageMin from 'gulp-imagemin'
+import extReplace from 'gulp-ext-replace'
+import newer from 'gulp-newer'
 
 export const images = () => {
   const stream = app.gulp
@@ -10,10 +10,10 @@ export const images = () => {
     .pipe(
       app.plugins.plumber(
         app.plugins.notify.onError({
-          title: "IMAGES",
-          message: "Error: <%= error.message %>",
-        })
-      )
+          title: 'IMAGES',
+          message: 'Error: <%= error.message %>',
+        }),
+      ),
     )
     // Инкрементальная сборка: обрабатываем только изменённые файлы
     // Сравниваем исходные файлы (jpg/png) с webp в папке назначения
@@ -21,37 +21,39 @@ export const images = () => {
       newer({
         dest: app.path.build.img,
         ext: '.webp',
-      })
+      }),
     )
     .pipe(
       imageMin({
         progressive: true,
         verbose: true,
         plugins: imageminWebp({ quality: 60 }),
-      })
+      }),
     )
-    .pipe(extReplace(".webp"))
+    .pipe(extReplace('.webp'))
     .pipe(app.gulp.dest(app.path.build.img))
   return stream
 }
 
 export const copyImages = () => {
-  return app.gulp
-    .src(app.path.src.imgSvg, { encoding: false })
-    .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: "COPY IMAGES",
-          message: "Error: <%= error.message %>",
-        })
+  return (
+    app.gulp
+      .src(app.path.src.imgSvg, { encoding: false })
+      .pipe(
+        app.plugins.plumber(
+          app.plugins.notify.onError({
+            title: 'COPY IMAGES',
+            message: 'Error: <%= error.message %>',
+          }),
+        ),
       )
-    )
-    // Инкрементальная сборка: обрабатываем только изменённые файлы
-    .pipe(
-      newer({
-        dest: app.path.build.img,
-        ext: '.svg',
-      })
-    )
-    .pipe(app.gulp.dest(app.path.build.img))
+      // Инкрементальная сборка: обрабатываем только изменённые файлы
+      .pipe(
+        newer({
+          dest: app.path.build.img,
+          ext: '.svg',
+        }),
+      )
+      .pipe(app.gulp.dest(app.path.build.img))
+  )
 }

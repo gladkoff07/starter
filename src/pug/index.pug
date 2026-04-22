@@ -2,10 +2,13 @@ doctype html
 html(lang="ru-RU")
   head
     meta(charset="utf-8")
-    link(rel="preconnect" href="https://fonts.googleapis.com")
-    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet")
-    meta(name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1")
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap",
+      rel="stylesheet"
+    )
+    meta(name="viewport", content="width=device-width,initial-scale=1, maximum-scale=1")
     title Navigation page
     style.
       body {
@@ -13,15 +16,15 @@ html(lang="ru-RU")
         margin: 0;
         padding: 3%;
         display: grid;
-        font-family: 'Ubuntu', sans-serif;
-        background: linear-gradient(135deg, #0a4f5f,#66a8b8);
+        font-family: "Ubuntu", sans-serif;
+        background: linear-gradient(135deg, #0a4f5f, #66a8b8);
         box-sizing: border-box;
       }
 
       .box-navigation {
         padding: 5%;
-        border: 1px solid rgba(255, 255, 255, .7);
-        clip-path: polygon(15px 0,100% 0,100% calc(100% - 15px), calc(100% - 15px) 100%,0 100%,0 15px);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
       }
 
       .box-navigation__header {
@@ -29,7 +32,7 @@ html(lang="ru-RU")
         font-size: 22px;
         font-weight: 700;
         color: #fff;
-        border-bottom: 2px solid rgba(255, 255, 255, .7);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.7);
       }
 
       nav {
@@ -52,4 +55,4 @@ html(lang="ru-RU")
     .box-navigation
       .box-navigation__header Навигация по страницам
       nav
-        a(href="home.html" target="_blank") Главная
+        a(href="home.html", target="_blank") Главная

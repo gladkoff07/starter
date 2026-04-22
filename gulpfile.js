@@ -1,21 +1,21 @@
-import gulp from "gulp"
-import { src, dest, watch, parallel, series, task } from "gulp"
-import { path } from "./gulp/config/path.js"
-import { plugins } from "./gulp/config/plugins.js"
-import { reset } from "./gulp/tasks/reset.js"
-import { html } from "./gulp/tasks/pugHtml.js"
-import { styles } from "./gulp/tasks/styles.js"
-import { images, copyImages } from "./gulp/tasks/images.js"
-import { scriptsDev, scriptsLibs } from "./gulp/tasks/scripts.js"
-import { server } from "./gulp/tasks/server.js"
-import { svgSprites } from "./gulp/tasks/svgSprite.js"
-import { ttfToWoff, ttfToWoff2, styleFonts } from "./gulp/tasks/fonts.js"
-import { deploy } from "./gulp/tasks/ftp.js"
-import { zip } from "./gulp/tasks/zip.js"
+import gulp from 'gulp'
+import { src, dest, watch, parallel, series, task } from 'gulp'
+import { path } from './gulp/config/path.js'
+import { plugins } from './gulp/config/plugins.js'
+import { reset } from './gulp/tasks/reset.js'
+import { html } from './gulp/tasks/pugHtml.js'
+import { styles } from './gulp/tasks/styles.js'
+import { images, copyImages } from './gulp/tasks/images.js'
+import { scriptsDev, scriptsLibs } from './gulp/tasks/scripts.js'
+import { server } from './gulp/tasks/server.js'
+import { svgSprites } from './gulp/tasks/svgSprite.js'
+import { ttfToWoff, ttfToWoff2, styleFonts } from './gulp/tasks/fonts.js'
+import { deploy } from './gulp/tasks/ftp.js'
+import { zip } from './gulp/tasks/zip.js'
 
 global.app = {
-  isBuild: process.argv.includes("--build"),
-  isDev: !process.argv.includes("--build"),
+  isBuild: process.argv.includes('--build'),
+  isDev: !process.argv.includes('--build'),
   path: path,
   gulp: gulp,
   plugins: plugins,
@@ -48,14 +48,14 @@ const fastDev = series(
   // Стили, скрипты, HTML — параллельно
   parallel(html, styles, scriptsDev, scriptsLibs),
   // Изображения — в фоне, не блокируют запуск
-  parallel(images, copyImages)
+  parallel(images, copyImages),
 )
 
 // Полная сборка (используется при build)
 const mainTasks = series(
   fonts,
   parallel(images, copyImages),
-  parallel(html, styles, scriptsDev, scriptsLibs, svgSprites)
+  parallel(html, styles, scriptsDev, scriptsLibs, svgSprites),
 )
 
 const dev = series(fastDev, parallel(watcher, server))
@@ -66,4 +66,4 @@ const archive = series(zip)
 export { archive }
 export { ftp }
 export { build }
-gulp.task("default", dev)
+gulp.task('default', dev)
