@@ -68,6 +68,7 @@
     "gulp-webp-html-nosvg": "^1.1.1",
     "gulp-zip": "^6.0.0",
     "imagemin-webp": "^8.0.0",
+    "merge-stream": "^2.0.0",
     "prettier": "^3.8.2",
     "sass": "^1.71.1",
     "stylelint": "^17.6.0",

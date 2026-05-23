@@ -3,6 +3,7 @@ import cssnano from 'cssnano'
 import cleanCss from 'gulp-clean-css'
 import gulpSass from 'gulp-sass'
 import * as dartSass from 'sass'
+import merge from 'merge-stream';
 
 const sass = gulpSass(dartSass)
 
