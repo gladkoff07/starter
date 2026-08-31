@@ -51,8 +51,8 @@ export const styles = () => {
         ),
       )
       .pipe(sass(stylesDev)) // просто компиляция SCSS
-      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write('.')))
       .pipe(rename({ suffix: '.min', prefix: '' })) // main.min.css (не сжатый)
+      .pipe(app.plugins.if(app.isDev, app.plugins.sourcemaps.write('.')))
       .pipe(app.gulp.dest(app.path.build.styles))
       .pipe(app.plugins.browsersync.stream())
   } else {

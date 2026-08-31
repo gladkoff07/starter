@@ -4,8 +4,8 @@
   }
 }
 
-@mixin fontFamily($size, $family) {
-  font-family: $family;
+@mixin fontFamily($size, $family, $fallback: null) {
+  font-family: $family, $fallback;
   font-size: $size;
 }
 
